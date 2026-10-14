@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DevStore — Прокачай свой код</title>
+<meta name="description" content="Премиальные курсы по программированию для разработчиков. Демо-магазин.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#05040a;--bg2:#0d0b18;--tx:#f5f3ff;--mu:#a29cc0;--p:#8b5cf6;--b:#3b82f6;--g:linear-gradient(120deg,#8b5cf6,#3b82f6);--gl:rgba(255,255,255,.05);--bd:rgba(255,255,255,.1);--ok:#34d399;--r:18px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#05040a}}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:80px;height:auto}
+body{background:var(--bg);color:var(--tx);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden;
+background-image:radial-gradient(60vw 40vw at 80% -5%,rgba(139,92,246,.28),transparent),radial-gradient(50vw 40vw at -10% 30%,rgba(59,130,246,.18),transparent)}
+h1,h2,h3,.logo{font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid #a78bfa;outline-offset:3px}
+.w{max-width:1180px;margin:auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(16px);background:rgba(5,4,10,.7);border-bottom:1px solid var(--bd)}
+nav .w{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-weight:700;font-size:22px;margin-right:auto}.logo i{font-style:normal;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav a.l{color:var(--mu);font-size:14px}nav a.l:hover{color:var(--tx)}
+.btn{border:0;border-radius:999px;padding:12px 24px;font-weight:600;background:var(--g);color:#fff;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 30px rgba(139,92,246,.35)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(139,92,246,.55)}
+.btn.o{background:var(--gl);border:1px solid var(--bd);box-shadow:none}
+.ib{background:var(--gl);border:1px solid var(--bd);border-radius:12px;padding:8px 12px;position:relative}
+.ib b{position:absolute;top:-6px;right:-6px;background:var(--p);border-radius:99px;font-size:11px;padding:0 6px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:30px;align-items:center;min-height:82vh;padding:50px 0}
+.hero h1{font-size:clamp(44px,7vw,92px);font-weight:700}
+.hero h1 span{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.hero p{color:var(--mu);font-size:18px;max-width:520px;margin:22px 0 30px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;height:460px;perspective:1100px}
+.lap{position:absolute;inset:60px 20px auto;transform-style:preserve-3d;transition:transform .15s;animation:fl 6s ease-in-out infinite}
+.scr{background:#0a0816;border:1px solid rgba(167,139,250,.5);border-radius:14px 14px 4px 4px;padding:16px;height:250px;font:13px/1.7 ui-monospace,Menlo,monospace;color:#c4b5fd;box-shadow:0 0 70px rgba(139,92,246,.45),inset 0 0 40px rgba(59,130,246,.12);overflow:hidden;white-space:pre}
+.base{height:14px;background:linear-gradient(#2a2545,#14112a);border-radius:0 0 18px 18px;margin:0 -24px;box-shadow:0 40px 50px rgba(0,0,0,.7)}
+.k{color:#60a5fa}.s{color:#86efac}.c{color:#6b6490}
+.chip{position:absolute;background:var(--gl);border:1px solid var(--bd);backdrop-filter:blur(12px);border-radius:14px;padding:8px 14px;font-size:13px;font-weight:600;animation:fl 5s ease-in-out infinite;white-space:nowrap}
+.chip:hover{border-color:var(--p);box-shadow:0 0 24px rgba(139,92,246,.5)}
+@keyframes fl{50%{translate:0 -14px}}
+.sec{padding:80px 0}.sec h2{font-size:clamp(30px,4.5vw,52px);margin-bottom:12px}.sub{color:var(--mu);margin-bottom:32px;max-width:560px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
+input,select{background:var(--gl);border:1px solid var(--bd);border-radius:12px;padding:11px 14px;color:var(--tx);font:inherit}
+select option{background:#14112a}input[type=search]{flex:1;min-width:220px}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.cat{background:var(--gl);border:1px solid var(--bd);border-radius:99px;padding:7px 16px;font-size:14px;color:var(--mu)}
+.cat[aria-pressed=true]{background:var(--g);color:#fff;border-color:transparent}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:var(--gl);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;backdrop-filter:blur(10px)}
+.card:hover{transform:translateY(-5px);border-color:rgba(167,139,250,.6)}
+.th svg{position:absolute;inset:0;width:100%;height:100%}.th{height:130px;display:grid;place-items:center;font:700 34px 'Space Grotesk';position:relative;cursor:pointer;border:0;width:100%}
+.dis{position:absolute;top:10px;left:10px;background:#111;border-radius:8px;font:600 12px Inter;padding:2px 8px;color:var(--ok)}
+.hb{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.45);border:0;border-radius:50%;width:34px;height:34px;font-size:17px}
+.hb[aria-pressed=true]{color:#f472b6}
+.bd{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}.bd h3{font-size:18px;line-height:1.2}
+.m{color:var(--mu);font-size:13px}.st{color:#fbbf24}
+.ft{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:10px}
+.pr{font:700 20px 'Space Grotesk'}.pr s{color:var(--mu);font-size:13px;font-weight:400;margin-left:6px}
+.add{background:var(--gl);border:1px solid var(--bd);border-radius:10px;padding:7px 12px;font-size:14px}.add:hover{border-color:var(--p)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.stats div{padding:26px 10px;border-radius:var(--r);background:var(--gl);border:1px solid var(--bd)}
+.stats b{display:block;font:700 42px 'Space Grotesk'}.stats span{color:var(--mu);font-size:14px}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.why div{padding:22px;border-left:2px solid var(--p);background:linear-gradient(90deg,rgba(139,92,246,.1),transparent)}
+.why h3{font-size:19px;margin-bottom:6px}.why p{color:var(--mu);font-size:14px}
+.q{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.q blockquote{padding:22px;border-radius:var(--r);background:var(--gl);border:1px solid var(--bd);color:#ddd6fe}
+.q cite{display:block;margin-top:12px;color:var(--mu);font-size:13px;font-style:normal}
+dialog{background:#0f0c1f;color:var(--tx);border:1px solid var(--bd);border-radius:22px;max-width:640px;width:calc(100% - 28px);padding:28px;max-height:88vh}
+dialog::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
+dialog h2{font-size:30px;margin:6px 0}dialog h4{margin:18px 0 6px;font-size:15px}
+dialog ul{padding-left:20px;color:var(--mu);font-size:14px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#0f0c1f;border-left:1px solid var(--bd);z-index:40;transform:translateX(105%);transition:transform .35s;padding:22px;display:flex;flex-direction:column;gap:12px;padding-top:calc(22px + env(safe-area-inset-top,0px))}
+.drawer.on{transform:none}.drawer .it{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd);font-size:14px}
+.pg{height:6px;border-radius:9px;background:var(--bd);overflow:hidden;margin-top:6px}.pg i{display:block;height:100%;background:var(--g)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));translate:-50% 30px;opacity:0;background:#1e1a3a;border:1px solid var(--p);padding:12px 20px;border-radius:12px;z-index:60;transition:.3s;pointer-events:none}
+.toast.on{opacity:1;translate:-50% 0}
+.demo{background:#1c1530;color:#c4b5fd;text-align:center;font-size:13px;padding:6px}
+footer{border-top:1px solid var(--bd);padding:40px 0;color:var(--mu);font-size:14px}
+.hid{display:none}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:0}.stage{height:380px}.stats{grid-template-columns:1fr 1fr}nav a.l{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style></head><body>
+<div class="demo">Демо-режим: примеры курсов и имитация оплаты. Реальных платежей, аккаунтов и данных нет.</div>
+<nav><div class="w"><a class="logo" href="#top">Dev<i>Store</i></a>
+<a class="l" href="#courses">Курсы</a><a class="l" href="#why">Почему DevStore</a><a class="l" href="#stories">Истории</a><a class="l" href="#mine" id="mineL">Мои курсы</a>
+<button class="ib" id="wishB" aria-label="Избранное">♥ <b id="wc">0</b></button>
+<button class="ib" id="cartB" aria-label="Открыть корзину">Корзина <b id="cc">0</b></button></div></nav>
+
+<main id="top"><div class="w hero">
+<div><h1>ПРОКАЧАЙ СВОЙ КОД.<span>СТРОЙ СВОЁ БУДУЩЕЕ.</span></h1>
+<p>Находите премиальные курсы по программированию, осваивайте востребованные технологии и становитесь разработчиком, которым всегда мечтали быть.</p>
+<div class="cta"><a class="btn" href="#courses">Смотреть курсы</a><button class="btn o" id="start">Начать учиться</button></div></div>
+<div class="stage" id="stage"><div class="lap" id="lap"><div class="scr" id="code" aria-hidden="true"></div><div class="base"></div></div>
+<button class="chip" style="top:6%;left:2%" data-c="Python">Python-разработка</button>
+<button class="chip" style="top:2%;right:4%;animation-delay:-1s" data-c="Фронтенд">Fullstack-веб</button>
+<button class="chip" style="top:46%;left:-2%;animation-delay:-2s" data-c="Фронтенд">React и Next.js</button>
+<button class="chip" style="top:50%;right:-2%;animation-delay:-3s" data-c="Фронтенд">Мастерство JavaScript</button>
+<button class="chip" style="bottom:4%;left:8%;animation-delay:-4s" data-c="Фронтенд">UI/UX-дизайн</button>
+<button class="chip" style="bottom:2%;right:10%;animation-delay:-1.5s" data-c="ИИ">Искусственный интеллект</button></div></div>
+
+<section class="w hid" id="recent"><h2 style="font-size:28px;margin-bottom:16px">Недавно просмотренные</h2><div class="grid" id="rg"></div></section>
+
+<section class="sec w" id="courses"><h2>Найдите свой следующий курс</h2><p class="sub">Ищите по названию, технологии или преподавателю, затем уточняйте по уровню, цене и рейтингу.</p>
+<div class="bar"><input type="search" id="q" placeholder="Курс, технология или преподаватель" aria-label="Поиск курсов">
+<select id="lv" aria-label="Уровень"><option value="">Любой уровень</option><option>Новичок</option><option>Средний</option><option>Продвинутый</option></select>
+<select id="pf" aria-label="Цена"><option value="999">Любая цена</option><option value="0">Бесплатные</option><option value="50">До $50</option><option value="80">До $80</option></select>
+<select id="rt" aria-label="Рейтинг"><option value="0">Любой рейтинг</option><option value="4.5">От 4.5</option><option value="4.7">От 4.7</option></select>
+<select id="so" aria-label="Сортировка"><option value="pop">Самые популярные</option><option value="rate">С лучшим рейтингом</option><option value="new">Новые</option><option value="lo">Сначала дешёвые</option><option value="hi">Сначала дорогие</option></select></div>
+<div class="cats" id="cats" role="group" aria-label="Категории"></div>
+<div class="grid" id="grid" aria-live="polite"></div></section>
+
+<section class="sec w hid" id="mine"><h2>Мои курсы</h2><p class="sub">Курсы, на которые вы записались в этом демо, и ваш прогресс.</p><div class="grid" id="mg"></div></section>
+
+<section class="sec w"><div class="stats" id="stats"><div><b data-n="12">0</b><span>Примеров курсов</span></div><div><b data-n="48000">0</b><span>Демо-студентов</span></div><div><b data-n="320">0</b><span>Демо-проектов</span></div><div><b data-n="97" data-s="%">0</b><span>Демо-удовлетворённость</span></div></div></section>
+
+<section class="sec w" id="why"><h2>Почему DevStore?</h2><p class="sub">Мы учим делать настоящие вещи, а не просто смотреть видео.</p><div class="why">
+<div><h3>Практические проекты</h3><p>Каждый курс заканчивается работой, которую можно показать в портфолио.</p></div>
+<div><h3>Опытные преподаватели</h3><p>Учитесь у инженеров, которые пишут код каждый день.</p></div>
+<div><h3>Доступ навсегда</h3><p>Купите один раз и возвращайтесь к урокам и обновлениям в любое время.</p></div>
+<div><h3>Сертификаты</h3><p>Подтверждайте прохождение сертификатом по каждому курсу.</p></div>
+<div><h3>Сообщество разработчиков</h3><p>Задавайте вопросы, получайте код-ревью и находите единомышленников.</p></div></div></section>
+
+<section class="sec w" id="stories"><h2>Истории карьеры</h2><p class="sub">Примеры отзывов для демонстрации.</p><div class="q">
+<blockquote>«Проекты дали мне портфолио, о котором реально есть что рассказать на собеседованиях.»<cite>Пример студента, перешёл во фронтенд</cite></blockquote>
+<blockquote>«Короткие уроки и живые задания помогали писать код каждый вечер.»<cite>Пример студента, джуниор бэкенд-разработчик</cite></blockquote>
+<blockquote>«Наконец-то разобрался с базами данных, пока делал финальный проект.»<cite>Пример студента, дата-инженер</cite></blockquote></div></section></main>
+
+<footer><div class="w">Демо DevStore. Для продакшена нужны Next.js, Supabase (авторизация, база, хранилище) и Stripe или региональный платёжный провайдер; ключи хранятся только на сервере.</div></footer>
+
+<dialog id="dlg"></dialog>
+<aside class="drawer" id="dr" aria-label="Корзина"><div style="display:flex;justify-content:space-between"><h3 id="dt">Корзина</h3><button class="ib" id="dx" aria-label="Закрыть">✕</button></div><div id="di" style="flex:1;overflow:auto"></div><div id="df"></div></aside>
+<div class="toast" id="t" role="status"></div>
+
+<script>
+const C=[
+["Python для реальных проектов","Python","Новичок",39,79,4.8,12400,"Анна Чен","2026-08",["Переменные","Функции","API","Автоматизация"],270],
+["Fullstack-веб на Node","Бэкенд","Средний",69,129,4.7,9800,"Максим Вебер","2026-06",["Express","REST","Авторизация","Деплой"],230],
+["React и Next.js Pro","Фронтенд","Средний",59,99,4.9,15300,"Лена Ортис","2026-09",["Компоненты","Роутинг","SSR","Загрузка данных"],255],
+["Мастерство JavaScript","Фронтенд","Новичок",29,59,4.8,21000,"Самир Окафор","2026-03",["Замыкания","Асинхронность","DOM","Тестирование"],45],
+["UI/UX для разработчиков","Фронтенд","Новичок",0,0,4.5,7600,"Нур Хасан","2026-05",["Сетка","Цвет","Типографика","Прототипы"],320],
+["Основы машинного обучения","ИИ","Продвинутый",89,149,4.7,8200,"Ирина Валь","2026-07",["Регрессия","Нейросети","Оценка качества","Внедрение"],285],
+["Приложения на LLM API","ИИ","Средний",49,89,4.6,5400,"Тимур Бранд","2026-10",["Промптинг","RAG","Агенты","Оценка"],200],
+["SQL и PostgreSQL изнутри","Базы данных","Средний",45,75,4.7,6900,"Прия Наир","2026-02",["Джойны","Индексы","Транзакции","Оптимизация"],160],
+["Kotlin и Android-приложения","Мобильные","Средний",55,95,4.5,4300,"Йонас Вебер","2026-04",["Compose","Состояние","Room","Публикация"],140],
+["React Native: основы","Мобильные","Новичок",39,69,4.6,5100,"Мия Торрес","2026-08",["Навигация","Нативные API","Хранилище","Релиз"],210],
+["Docker и Kubernetes","DevOps","Продвинутый",79,139,4.8,7200,"Омар Саид","2026-01",["Контейнеры","Поды","CI/CD","Мониторинг"],190],
+["Основы Linux и Git","DevOps","Новичок",0,0,4.4,11800,"Хана Ким","2026-09",["Командная строка","Права доступа","Ветвление","Хуки"],100]];
+const K=["Все","Фронтенд","Бэкенд","Python","Мобильные","ИИ","Базы данных","DevOps"];
+const G=["</>","{}","#","λ","AI","SQL"];
+function art(i){const c=C[i],h=c[10];let l="";for(let k=0;k<6;k++)l+=`<rect x="${68+(k%2)*10}" y="${40+k*11}" width="${30+(i*13+k*29)%75}" height="5" rx="2.5" fill="hsl(${(h+k*25)%360} 90% 70%)" opacity=".85"/>`;
+return `<svg viewBox="0 0 260 130" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="215" cy="20" r="75" fill="hsl(${h} 90% 65%)" opacity=".25"/><circle cx="30" cy="120" r="60" fill="hsl(${(h+60)%360} 90% 60%)" opacity=".2"/><g transform="rotate(-5 130 70)"><rect x="55" y="24" width="150" height="86" rx="8" fill="#0a0816" stroke="hsl(${h} 90% 75%)" stroke-opacity=".7"/><circle cx="66" cy="32" r="2" fill="#f87171"/><circle cx="73" cy="32" r="2" fill="#fbbf24"/><circle cx="80" cy="32" r="2" fill="#34d399"/>${l}</g><text x="222" y="62" fill="#fff" font-size="26" font-weight="700" text-anchor="middle" font-family="monospace" opacity=".9">${G[i%6]}</text><circle cx="30" cy="104" r="15" fill="hsl(${(h+40)%360} 60% 45%)" stroke="#fff" stroke-opacity=".6"/><text x="30" y="110" fill="#fff" font-size="16" font-weight="700" text-anchor="middle">${c[7][0]}</text></svg>`}
+const $=id=>document.getElementById(id);let cat="Все";
+let S={wish:[],cart:[],recent:[],own:[]};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem("ds")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("ds",JSON.stringify(S))}catch(e){}};
+const th=i=>`background:linear-gradient(135deg,hsl(${C[i][10]} 70% 35%),hsl(${(C[i][10]+60)%360} 80% 18%))`;
+const pr=c=>c[3]?`$${c[3]}<s>$${c[4]}</s>`:"Бесплатно";
+function card(i,mode){const c=C[i],d=c[4]?Math.round(100-c[3]/c[4]*100):0,w=S.wish.includes(i);
+const p=(i*37)%80+10;
+return `<article class="card"><button class="th" style="${th(i)}" data-o="${i}" aria-label="Открыть ${c[0]}">${art(i)}${d?`<span class="dis">-${d}%</span>`:""}</button>
+<button class="hb" data-w="${i}" aria-pressed="${w}" aria-label="Избранное">♥</button>
+<div class="bd"><span class="m">${c[1]} · ${c[2]}</span><h3>${c[0]}</h3><span class="m">${c[7]}</span>
+<span class="m"><span class="st">★</span> ${c[5]} (${c[6].toLocaleString("ru-RU")} студентов)</span>
+${mode=="own"?`<div class="pg"><i style="width:${p}%"></i></div><span class="m">пройдено ${p}%</span><button class="btn" data-o="${i}">Продолжить</button>`:
+`<div class="ft"><span class="pr">${pr(c)}</span>${S.own.includes(i)?'<span class="m">Вы записаны</span>':`<button class="add" data-a="${i}">${S.cart.includes(i)?"В корзине":"В корзину"}</button>`}</div>`}</div></article>`}
+function render(){
+const q=$("q").value.toLowerCase(),lv=$("lv").value,mp=+$("pf").value,mr=+$("rt").value,so=$("so").value;
+let r=C.map((c,i)=>i).filter(i=>{const c=C[i];return(cat=="Все"||c[1]==cat)&&(!lv||c[2]==lv)&&c[3]<=mp&&c[5]>=mr&&(c[0]+c[1]+c[7]+c[9].join()).toLowerCase().includes(q)});
+r.sort((a,b)=>({pop:C[b][6]-C[a][6],rate:C[b][5]-C[a][5],new:C[b][8]<C[a][8]?-1:1,lo:C[a][3]-C[b][3],hi:C[b][3]-C[a][3]})[so]);
+$("grid").innerHTML=r.length?r.map(i=>card(i)).join(""):'<p class="sub">Ничего не найдено. Сбросьте фильтр или попробуйте другое слово.</p>';
+$("cats").innerHTML=K.map(k=>`<button class="cat" aria-pressed="${k==cat}" data-k="${k}">${k}</button>`).join("");
+$("rg").innerHTML=S.recent.map(i=>card(i)).join("");$("recent").classList.toggle("hid",!S.recent.length);
+$("mg").innerHTML=S.own.map(i=>card(i,"own")).join("");$("mine").classList.toggle("hid",!S.own.length);
+$("mineL").style.display=S.own.length?"":"none";
+$("wc").textContent=S.wish.length;$("cc").textContent=S.cart.length;
+}
+function toast(m){const t=$("t");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2200)}
+function open(i){const c=C[i];S.recent=[i,...S.recent.filter(x=>x!=i)].slice(0,4);save();
+$("dlg").innerHTML=`<div class="th" style="${th(i)};height:150px;border-radius:14px;cursor:default;overflow:hidden">${art(i)}</div><h2>${c[0]}</h2>
+<p class="m"><span class="st">★</span> ${c[5]} · ${c[6].toLocaleString("ru-RU")} студентов · ${c[2]} · преподаватель: ${c[7]}</p>
+<p style="margin-top:12px;color:var(--mu)">Практический курс, где вы учитесь на проектах. Уроки короткие, каждый модуль заканчивается тестом и заданием по коду, а итоговый проект остаётся у вас.</p>
+<h4>Программа</h4><ul>${c[9].map((m,n)=>`<li>Модуль ${n+1}: ${m}</li>`).join("")}</ul>
+<h4>Чему вы научитесь</h4><ul><li>Соберёте и запустите готовый проект (${c[1]})</li><li>Будете писать чистый код с тестами</li><li>Подготовитесь к реальным собеседованиям</li></ul>
+<h4>Требования</h4><ul><li>Компьютер и любопытство${c[2]=="Новичок"?"":"; пригодится опыт"}</li></ul>
+<div class="ft" style="margin-top:22px"><span class="pr">${pr(c)}</span><span><button class="btn o" data-x>Закрыть</button> ${S.own.includes(i)?'<button class="btn" data-x>Начать урок</button>':`<button class="btn" data-a="${i}" data-x>В корзину</button>`}</span></div>`;
+$("dlg").showModal();render()}
+function cart(){const tot=S.cart.reduce((s,i)=>s+C[i][3],0);
+$("di").innerHTML=S.cart.length?S.cart.map(i=>`<div class="it"><span>${C[i][0]}</span><span>${C[i][3]?"$"+C[i][3]:"Бесплатно"} <button class="add" data-r="${i}" aria-label="Удалить">✕</button></span></div>`).join(""):'<p class="m">Корзина пуста. Выберите курс в каталоге и добавьте его.</p>';
+$("df").innerHTML=S.cart.length?`<div class="ft"><b>Итого</b><span class="pr">$${tot}</span></div><p class="m">Имитация оплаты. Деньги не списываются.</p><button class="btn" id="co" style="width:100%;margin-top:8px">Оформить демо-заказ</button>`:""}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-o],[data-w],[data-a],[data-r],[data-k],[data-c],[data-x],#co,#cartB,#dx,#wishB,#start");if(!t)return;const d=t.dataset;
+if(d.o!=null)return open(+d.o);
+if(d.w!=null){const i=+d.w;S.wish=S.wish.includes(i)?S.wish.filter(x=>x!=i):[...S.wish,i];toast(S.wish.includes(i)?"Добавлено в избранное":"Убрано из избранного")}
+if(d.a!=null){const i=+d.a;if(!S.cart.includes(i)&&!S.own.includes(i)){S.cart.push(i);toast("Добавлено в корзину")}}
+if(d.r!=null)S.cart=S.cart.filter(x=>x!=+d.r);
+if(d.k){cat=d.k}
+if(d.c){cat=d.c;$("courses").scrollIntoView()}
+if(d.x!=null)$("dlg").close();
+if(t.id=="co"){S.own=[...new Set([...S.own,...S.cart])];S.cart=[];$("dr").classList.remove("on");toast("Вы записаны. Курсы ждут в разделе «Мои курсы».");setTimeout(()=>$("mine").scrollIntoView(),300)}
+if(t.id=="cartB"){$("dt").textContent="Корзина";cart();$("dr").classList.add("on")}
+if(t.id=="wishB"){$("dt").textContent="Избранное";$("di").innerHTML=S.wish.length?S.wish.map(i=>`<div class="it"><span>${C[i][0]}</span><button class="add" data-o="${i}">Открыть</button></div>`).join(""):'<p class="m">Нажмите на сердечко у курса, чтобы сохранить его здесь.</p>';$("df").innerHTML="";$("dr").classList.add("on")}
+if(t.id=="dx")$("dr").classList.remove("on");
+if(t.id=="start"){S.cart.length||open(2);}
+save();render();if($("dr").classList.contains("on")&&$("dt").textContent=="Корзина")cart()});
+["q","lv","pf","rt","so"].forEach(id=>$(id).addEventListener("input",render));
+$("dlg").addEventListener("click",e=>{if(e.target==$("dlg"))$("dlg").close()});
+// hero typing
+const src=[`<span class="c">// devstore/hero.ts</span>`,`<span class="k">const</span> dev = <span class="k">new</span> Developer();`,`dev.learn(<span class="s">"React"</span>, <span class="s">"Python"</span>);`,`<span class="k">await</span> dev.build(<span class="s">"my future"</span>);`,`<span class="c">// ✓ deployed</span>`];
+const el=$("code");let n=0;const plain=src.map(s=>s.replace(/<[^>]+>/g,""));
+if(matchMedia("(prefers-reduced-motion:reduce)").matches)el.innerHTML=src.join("\n");
+else{(function tick(){n=(n+1)%(plain.join("\n").length+40);let left=n,out="";for(let k=0;k<src.length;k++){if(left<=0)break;const L=plain[k].length+1;out+=left>=L?src[k]+"\n":plain[k].slice(0,left)+"▍";left-=L}el.innerHTML=out;setTimeout(tick,55)})()}
+// hero tilt
+$("stage").addEventListener("pointermove",e=>{const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$("lap").style.transform=`rotateY(${x*22}deg) rotateX(${-y*14}deg)`});
+$("stage").addEventListener("pointerleave",()=>$("lap").style.transform="");
+// stat counters
+new IntersectionObserver((es,o)=>es.forEach(x=>{if(!x.isIntersecting)return;o.unobserve(x.target);x.target.querySelectorAll("b").forEach(b=>{const T=+b.dataset.n,s=b.dataset.s||"";let v=0;const st=()=>{v+=T/40;b.textContent=Math.round(Math.min(v,T)).toLocaleString()+s;if(v<T)requestAnimationFrame(st)};st()})}),{threshold:.4}).observe($("stats"));
+render();
+</script></body></html>
